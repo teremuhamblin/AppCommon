@@ -1,4 +1,5 @@
-###### README.md >> markdown 
+###### README.md >> markdown
+[![pages-build-deployment](https://github.com/teremuhamblin/AppCommon/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/teremuhamblin/AppCommon/actions/workflows/pages/pages-build-deployment)
 # AppCommon v1.0
 **Template universel pour applications & sites web**
 
