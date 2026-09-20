@@ -1,11 +1,11 @@
 {
-    "name": "AppCommon",
-    "version": "1.0",
-    "description": "Template universel pour applications et sites web.",
-    "author": "Teremu",
-    "license": "The Unlicense v1.0",
-    "build": {
-        "distFolder": "dist",
-        "srcFolder": "src"
-    }
+  "name": "AppCommon",
+  "version": "1.0",
+  "description": "Template universel pour applications et sites web.",
+  "author": "Teremu",
+  "license": "The Unlicense v1.0",
+  "build": {
+    "distFolder": "dist",
+    "srcFolder": "src"
+  }
 }
