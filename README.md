@@ -1,16 +1,16 @@
 ###### README.md >> markdown
-# 📘 AppCommon v1.0
+# 📘 AppCommon
+- v1.0
    - Template universel, minimaliste et extensible pour applications web modernes
-
+```text
 AppCommon v1.0 est un template professionnel, conçu pour fournir une base propre, stable et automatisée pour tout projet web.  
 Il inclut une structure simple, des bonnes pratiques modernes, un pipeline CI/CD complet, et une configuration GitHub optimisée.
+```
 
 ---
 
-🎯 Objectifs du projet
-
+### 🎯 Objectifs du projet
 AppCommon vise à :
-
 - fournir une base minimaliste mais extensible  
 - garantir une qualité de code constante via CI/CD  
 - offrir une structure universelle adaptable à tout type d’application  
@@ -19,8 +19,7 @@ AppCommon vise à :
 
 ---
 
-📁 Structure du dépôt
-
+### 📁 Structure du dépôt
 ```text
 AppCommon/
 │
@@ -53,8 +52,7 @@ AppCommon/
 
 ---
 
-⚙️ CI/CD — Workflows GitHub Actions
-
+### ⚙️ CI/CD — Workflows GitHub Actions
 AppCommon v1.0 inclut un pipeline complet :
 
 🔨 Build & Tests
@@ -70,7 +68,6 @@ AppCommon v1.0 inclut un pipeline complet :
 
 🚀 Release automatique
 Lorsqu’un tag est créé :
-
 - build du projet  
 - publication du package npm  
 - création d’une release GitHub  
@@ -84,7 +81,6 @@ La branche main est automatiquement synchronisée avec le dépôt AppCommon Temp
 🔒 Branche main
 
 La branche main est :
-
 - protégée  
 - stable  
 - revue obligatoire  
@@ -96,10 +92,9 @@ La branche main est :
 📚 Documentation
 
 La documentation du dépôt est disponible dans :
-
-`
+```md
 docs/about-repo.md
-`
+```
 
 Elle décrit :
 
@@ -115,24 +110,23 @@ Elle décrit :
 🚀 Démarrer un projet avec AppCommon
 
 Installation
-
-`
+```git
 git clone https://github.com/<user>/AppCommon
 cd AppCommon
 npm install
-`
+```
 
 Build
 
-`
+```npm
 npm run build
-`
+```
 
 Lancer le projet
 
-`
+```npm
 npm start
-`
+```
 
 ---
 
