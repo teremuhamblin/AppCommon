@@ -1,134 +1,162 @@
 ###### README.md >> markdown
-[![pages-build-deployment](https://github.com/teremuhamblin/AppCommon/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/teremuhamblin/AppCommon/actions/workflows/pages/pages-build-deployment)
-# AppCommon
-**Template universel pour applications & sites web**
+# 📘 AppCommon v1.0
+   - Template universel, minimaliste et extensible pour applications web modernes
 
-- **AppCommon v1.0** est un modèle professionnel conçu pour servir de base solide à la création d’applications web, sites statiques, outils front‑end ou prototypes rapides.
-- Il fournit une structure propre, légère, adaptable, et totalement libre grâce à la licence The Unlicense v1.0.
- - Ce projet est pensé pour être minimal, modulaire, et facile à étendre ou à nettoyer selon vos besoins.
+AppCommon v1.0 est un template professionnel, conçu pour fournir une base propre, stable et automatisée pour tout projet web.  
+Il inclut une structure simple, des bonnes pratiques modernes, un pipeline CI/CD complet, et une configuration GitHub optimisée.
 
 ---
 
-### Objectifs du projet
-- AppCommon v1.0 vise à fournir :
-   - Une base universelle pour démarrer n’importe quel projet web ou application front‑end.  
-   - Une structure claire, compréhensible, et adaptée aux workflows modernes.  
-   - Un environnement sans dépendances obligatoires.  
-   - Une documentation intégrée pour faciliter la prise en main et l’évolution du projet.
+🎯 Objectifs du projet
+
+AppCommon vise à :
+
+- fournir une base minimaliste mais extensible  
+- garantir une qualité de code constante via CI/CD  
+- offrir une structure universelle adaptable à tout type d’application  
+- automatiser les tâches critiques : build, tests, sécurité, release  
+- servir de template officiel pour démarrer rapidement un nouveau projet
 
 ---
 
-### Structure du dépôt
-Le dépôt AppCommon v1.0 contient :
-```md
-- /dist/ — Version prête à l’emploi pour déploiement ou intégration.  
-- /src/ — Fichiers sources HTML/CSS/JS minimalistes.  
-- /docs/ — Documentation embarquée, lisible hors‑ligne.  
-- /assets/ — Images, icônes, ressources statiques.  
-- appcommon.config.json — Configuration générale du projet.  
-- LICENSE — Licence The Unlicense v1.0.  
-- README.md — Ce document.
+📁 Structure du dépôt
+
+```text
+AppCommon/
+│
+├── src/                 # Code source principal
+├── dist/                # Build généré automatiquement
+├── docs/                # Documentation du projet
+│   └── about-repo.md    # Documentation GitHub du dépôt
+│
+├── .github/
+│   ├── workflows/       # CI/CD complet
+│   │   ├── build-dist.yml
+│   │   ├── codeql-analysis.yml
+│   │   ├── dependency-review.yml
+│   │   ├── publish.yml
+│   │   ├── push-to-template.yml
+│   │   ├── spellcheck.yml
+│   │   ├── test.yml
+│   │   └── test-windows.yml
+│   ├── ISSUE_TEMPLATE.md
+│   ├── PULLREQUESTTEMPLATE.md
+│   ├── CODEOFCONDUCT.md
+│   ├── CONTRIBUTING.md
+│   ├── SUPPORT.md
+│   └── dependabot.yml
+│
+├── package.json
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-Démarrer un projet avec AppCommon
-1. Cloner le dépôt
-```bash
-git clone https://github.com/ton-compte/AppCommon
+⚙️ CI/CD — Workflows GitHub Actions
+
+AppCommon v1.0 inclut un pipeline complet :
+
+🔨 Build & Tests
+- Build Node.js 22 et 24  
+- Tests sur Ubuntu et Windows  
+- Génération automatique du dossier dist/  
+- Upload de l’artefact dist.zip
+
+🔐 Sécurité
+- Analyse CodeQL  
+- Dependency Review  
+- Scan de vulnérabilités potentielles
+
+🚀 Release automatique
+Lorsqu’un tag est créé :
+
+- build du projet  
+- publication du package npm  
+- création d’une release GitHub  
+- ajout automatique de dist.zip
+
+🔄 Synchronisation Template
+La branche main est automatiquement synchronisée avec le dépôt AppCommon Template.
+
+---
+
+🔒 Branche main
+
+La branche main est :
+
+- protégée  
+- stable  
+- revue obligatoire  
+- build Node 22/24 obligatoire  
+- force push autorisé pour les administrateurs en cas d’urgence
+
+---
+
+📚 Documentation
+
+La documentation du dépôt est disponible dans :
+
+`
+docs/about-repo.md
+`
+
+Elle décrit :
+
+- la configuration GitHub  
+- les workflows  
+- les règles de contribution  
+- la philosophie AppCommon  
+- les processus de release  
+- la synchronisation template
+
+---
+
+🚀 Démarrer un projet avec AppCommon
+
+Installation
+
+`
+git clone https://github.com/<user>/AppCommon
 cd AppCommon
-```
-Modifiez ensuite le dossier /src/ selon vos besoins.
+npm install
+`
+
+Build
+
+`
+npm run build
+`
+
+Lancer le projet
+
+`
+npm start
+`
 
 ---
 
-2. Copier uniquement le dossier dist
-Pour utiliser AppCommon comme template minimal :
-```bash
-cp -r dist/ mon-projet/
-```
+🤝 Contribution
+
+Les contributions sont les bienvenues.  
+Veuillez lire :
+
+- CONTRIBUTING.md  
+- CODEOFCONDUCT.md  
+- ISSUE_TEMPLATE.md  
+- PULLREQUESTTEMPLATE.md
 
 ---
 
-3. Intégration dans un projet existant
-Copiez les éléments suivants :
-- index.html
-- css/appcommon.css
-- js/appcommon.js
-- assets/
+📄 Licence
 
-Puis adaptez selon votre architecture.
+AppCommon v1.0 est publié sous The Unlicense v1.0.  
+Le projet est totalement libre, ouvert, et réutilisable sans restriction.
 
 ---
 
-### Fonctionnalités principales
-```md
-- Structure HTML5 propre et optimisée  
-- CSS minimaliste avec classes utilitaires  
-- JS léger, sans framework imposé  
-- Compatibilité totale navigateurs modernes  
-- Documentation intégrée  
-- Facile à nettoyer : supprimez ce que vous n’utilisez pas  
-- Aucune dépendance obligatoire  
-- Licence totalement libre (The Unlicense v1.0)
-```
+🧭 Statut du projet
 
----
-
-### Support navigateurs
-AppCommon v1.0 supporte les versions stables des navigateurs modernes :
-- Chrome  
-- Firefox  
-- Edge  
-- Safari  
-- Opera  
-
----
-
-### Documentation
-La documentation complète est disponible dans :
-```doc
-docs/TOC.md
-```
-
-Elle couvre :
-- Structure du projet  
-- Méthodologie  
-- Intégration dans un workflow moderne  
-- Bonnes pratiques front‑end  
-- Extensions possibles  
-
----
-
-### Contribuer
-Les contributions sont les bienvenues.
-Avant de proposer un changement, merci de consulter :
-```markdown 
-docs/CONTRIBUTING.md
-```
-Vous y trouverez :
-
-- Comment signaler un bug  
-- Comment proposer une fonctionnalité  
-- Comment soumettre une pull request  
-
----
-
-### Licence
-### The Unlicense v1.0
-Ce projet est placé dans le domaine public via The Unlicense v1.0.
-```md
-Vous êtes libre de copier, modifier, publier, utiliser, compiler, vendre ou distribuer ce logiciel, pour n’importe quel usage, sans aucune restriction.
-
-LE LOGICIEL EST FOURNI "TEL QUEL", SANS AUCUNE GARANTIE, EXPRESSE OU IMPLICITE, Y COMPRIS LES GARANTIES DE QUALITÉ MARCHANDE, D’ADÉQUATION À UN USAGE PARTICULIER ET D’ABSENCE DE CONTREFAÇON.
-```
-Pour plus d’informations :  
-- https://unlicense.org
-
----
-
-Version :
-- AppCommon v1.0
-- Version stable.
+AppCommon v1.0 est stable, fonctionnel, et prêt à être utilisé comme template pour tout nouveau projet web.
 
 ---
