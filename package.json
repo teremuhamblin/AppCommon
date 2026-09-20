@@ -1,0 +1,20 @@
+{
+  "name": "appcommon",
+  "version": "1.0.0",
+  "description": "Template universel pour applications et sites web.",
+  "author": "Teremu",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "start": "echo 'AppCommon v1.0 — aucun serveur configuré'",
+    "lint": "eslint src dist",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-mocha": "^10.0.0",
+    "globals": "^15.0.0",
+    "prettier": "^3.0.0"
+  }
+}
