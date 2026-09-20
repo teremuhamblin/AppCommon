@@ -1,10 +1,10 @@
 ###### README.md >> markdown
 [![pages-build-deployment](https://github.com/teremuhamblin/AppCommon/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/teremuhamblin/AppCommon/actions/workflows/pages/pages-build-deployment)
-# AppCommon v1.0
+# AppCommon
 **Template universel pour applications & sites web**
 
 - **AppCommon v1.0** est un modèle professionnel conçu pour servir de base solide à la création d’applications web, sites statiques, outils front‑end ou prototypes rapides.  - Il fournit une structure propre, légère, adaptable, et totalement libre grâce à la licence The Unlicense v1.0.
-- Ce projet est pensé pour être minimal, modulaire, et facile à étendre ou à nettoyer selon vos besoins.
+ - Ce projet est pensé pour être minimal, modulaire, et facile à étendre ou à nettoyer selon vos besoins.
 
 ---
 
