@@ -1,4 +1,4 @@
-name: Build
+name: Build & Release
 
 on:
   push:
@@ -16,6 +16,7 @@ jobs:
       - run: npm run lint
       - run: npm run format
       - run: npm run build
+      - run: npm test
       - uses: actions/upload-artifact@v4
         with:
           name: dist
