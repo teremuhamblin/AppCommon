@@ -1,4 +1,4 @@
-// AppCommon v1.0 — Gulp Build System Minimal & Efficace
+// AppCommon v1.1 — Gulp Build System Minimal & Modulaire
 
 import fs from 'fs';
 import path from 'path';
@@ -15,7 +15,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
 
-// Dossiers AppCommon v1.0
+// Dossiers AppCommon v1.1
 const dirs = {
   src: 'src',
   dist: 'dist',
@@ -76,7 +76,7 @@ gulp.task('clean', done => {
 });
 
 // ---------------------------------------------------------------------
-// | Copy tasks                                                        |
+// | Copy tasks (AppCommon v1.1)                                       |
 // ---------------------------------------------------------------------
 
 // Copier index.html
@@ -89,21 +89,39 @@ gulp.task('copy:license', () =>
   gulp.src('LICENSE').pipe(gulp.dest(dirs.dist))
 );
 
-// Copier CSS avec autoprefixer + header
+// Copier CSS (UI core + thèmes + composants)
 gulp.task('copy:css', () => {
   const banner = `/*! AppCommon v${pkg.version} | ${pkg.license} */\n\n`;
 
   return gulp
-    .src(`${dirs.src}/css/appcommon.css`)
+    .src([
+      `${dirs.src}/ui/**/*.css`,
+      `!${dirs.src}/ui/themes/**/*.css` // thèmes copiés séparément
+    ])
     .pipe(gulpHeader(banner))
     .pipe(gulpAutoPrefixer({ cascade: false }))
-    .pipe(gulpRename({ basename: 'appcommon' }))
-    .pipe(gulp.dest(`${dirs.dist}/css`));
+    .pipe(gulp.dest(`${dirs.dist}/ui`));
 });
 
-// Copier JS
+// Copier thèmes UI
+gulp.task('copy:themes', () =>
+  gulp.src(`${dirs.src}/ui/themes/**/*.css`).pipe(gulp.dest(`${dirs.dist}/ui/themes`))
+);
+
+// Copier JS (core + modules + ui)
 gulp.task('copy:js', () =>
-  gulp.src(`${dirs.src}/js/appcommon.js`).pipe(gulp.dest(`${dirs.dist}/js`))
+  gulp
+    .src([
+      `${dirs.src}/core/**/*.js`,
+      `${dirs.src}/modules/**/*.js`,
+      `${dirs.src}/ui/**/*.js`
+    ])
+    .pipe(gulp.dest(`${dirs.dist}`))
+);
+
+// Copier assets
+gulp.task('copy:assets', () =>
+  gulp.src(`${dirs.src}/assets/**/*`).pipe(gulp.dest(`${dirs.dist}/assets`))
 );
 
 // Copier tout le reste
@@ -113,8 +131,11 @@ gulp.task('copy:misc', () =>
       [
         `${dirs.src}/**/*`,
         `!${dirs.src}/index.html`,
-        `!${dirs.src}/css/appcommon.css`,
-        `!${dirs.src}/js/appcommon.js`,
+        `!${dirs.src}/ui/**/*.css`,
+        `!${dirs.src}/ui/**/*.js`,
+        `!${dirs.src}/core/**/*.js`,
+        `!${dirs.src}/modules/**/*.js`,
+        `!${dirs.src}/assets/**/*`,
         '!**/.DS_Store'
       ],
       { dot: true }
@@ -123,12 +144,16 @@ gulp.task('copy:misc', () =>
 );
 
 // ---------------------------------------------------------------------
-// | Lint                                                              |
+// | Lint (AppCommon v1.1)                                             |
 // ---------------------------------------------------------------------
 
 gulp.task('lint:js', () =>
   gulp
-    .src([`${dirs.src}/js/*.js`, `${dirs.src}/*.js`])
+    .src([
+      `${dirs.src}/core/**/*.js`,
+      `${dirs.src}/modules/**/*.js`,
+      `${dirs.src}/ui/**/*.js`
+    ])
     .pipe(gulpEslint())
     .pipe(gulpEslint.failOnError())
 );
@@ -139,7 +164,15 @@ gulp.task('lint:js', () =>
 
 gulp.task(
   'copy',
-  gulp.series('copy:index', 'copy:license', 'copy:css', 'copy:js', 'copy:misc')
+  gulp.series(
+    'copy:index',
+    'copy:license',
+    'copy:css',
+    'copy:themes',
+    'copy:js',
+    'copy:assets',
+    'copy:misc'
+  )
 );
 
 gulp.task('build', gulp.series(gulp.parallel('clean', 'lint:js'), 'copy'));
