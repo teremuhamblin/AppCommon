@@ -1,6 +1,6 @@
 ###### README.md >> markdown 
 # 🧨 Strucutre du projet
-- AppCommon v1.0 → v1.1
+- AppCommon v1.0 → v3.0
 ### Objectif :  
 > Clarifier, normaliser, séparer les responsabilités, préparer la modularité, renforcer CI/CD, améliorer la documentation, professionnaliser l’arborescence.
 
@@ -8,39 +8,30 @@
 ```text
 AppCommon/
 │
-├── src/                         # Code source principal
-│   ├── core/                    # Noyau de l'application
-│   │   ├── app.js               # Initialisation AppCommon
-│   │   ├── config.js            # Configuration centralisée
-│   │   └── common.js            # Fonctions utilitaires
+├── src/ (Code source principal)
+│   ├── core/ (Noyau de l'application)
+│   │   ├── Initialisation AppCommon
+│   │   ├── Configuration centralisée
+│   │   └── Fonctions utilitaires
 │   │
-│   ├── modules/                 # Modules optionnels (v1.1-ready)
-│   │   └── example-module.js
+│   ├── modules/ (Modules optionnels)
+│   │   └── Example de modules
 │   │
-│   ├── ui/                      # Interface utilisateur
-│   │   ├── ui-core.css          # Style principal
-│   │   ├── components/          # Composants UI réutilisables
-│   │   │   └── button.css
-│   │   └── themes/              # Thèmes (military, dark, light…)
-│   │       └── military.css
+│   ├── ui/ (Interface utilisateur)
+│   │   ├── Style principal
+│   │   ├── Composants UI réutilisables
+│   │   └── Thèmes militaire, dark, light…
 │   │
-│   ├── assets/                  # Images, icônes, fonts
-│   │   └── logo.svg
+│   ├── assets/ (Images, icônes, fonts)
 │   │
-│   └── index.html               # Entrée principale
+│   └── index.html (Entrée principale)
 │
-├── dist/                        # Build généré automatiquement
-│   └── (auto-généré par CI)
+├── dist/ (Build généré automatiquement, auto-généré par CI)
 │
-├── docs/                        # Documentation du projet
-│   ├── # Documentation GitHub du dépôt
-│   ├── # Architecture AppCommon
-│   ├── # Documentation des modules
-│   ├── # Documentation CI/CD
-│   └── # Guide d'utilisation
+├── docs/ (Documentation GitHub du dépôt)
 │
 ├── .github/
-│   ├── workflows/               # CI/CD complet
+│   ├── workflows/ (CI/CD complet)
 │   │   ├── build-dist.yml
 │   │   ├── codeql-analysis.yml
 │   │   ├── dependency-review.yml
@@ -51,6 +42,7 @@ AppCommon/
 │   │   └── test-windows.yml
 │   │
 │   ├── ISSUE_TEMPLATE.md
+│   ├── GUIDELINES.md
 │   ├── PULLREQUESTTEMPLATE.md
 │   ├── CODEOFCONDUCT.md
 │   ├── CONTRIBUTING.md
