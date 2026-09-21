@@ -1,9 +1,32 @@
 {
+  "$schema": "https://json.schemastore.org/prettierrc",
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
   "useTabs": false,
   "printWidth": 100,
   "trailingComma": "none",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+
+  // AppCommon v1.1 — Structure modulaire
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "preserve"
+      }
+    },
+    {
+      "files": ["*.yml", "*.yaml"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["src/ui/**/*.css"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
 }
