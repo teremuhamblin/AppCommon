@@ -1,5 +1,4 @@
-# AppCommon v1.0 — EditorConfig
-
+# AppCommon v1.1 — EditorConfig
 root = true
 
 [*]
@@ -10,5 +9,34 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+# Markdown — ne pas supprimer les espaces en fin de ligne
 [*.md]
+trim_trailing_whitespace = false
+
+# JSON — indentation stricte 2 espaces
+[*.json]
+indent_size = 2
+
+# YAML — workflows GitHub
+[*.yml]
+indent_size = 2
+
+# CSS — UI, composants, thèmes
+[*.css]
+indent_size = 2
+
+# JavaScript — core, modules
+[*.js]
+indent_size = 2
+
+# HTML — index.html
+[*.html]
+indent_size = 2
+
+# Documentation
+[docs/**.md]
+trim_trailing_whitespace = false
+
+# GitHub templates
+[.github/**.md]
 trim_trailing_whitespace = false
