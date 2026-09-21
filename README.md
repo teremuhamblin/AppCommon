@@ -19,7 +19,7 @@ Template modulaire professionnel, optimisé, industrialisé, équipé d’une CL
 - Générateur de projets (appcommon project <nom>)
 - Build Gulp v5.0 optimisé
 - Structure src/ stabilisée et modulaire
-- Documentation complète (ROADMAP, CHANGELOG, ARCHITECTURE, USAGE)
+- Documentation complète (ROADMAP, CHANGELOG, STRUCTURE, USAGE)
 - CI/CD GitHub Actions complet (lint, format, build, tests, artefacts)
 - MIR v5.0 (Milestone / Issue / Release)
 - Version prête pour production
@@ -103,7 +103,7 @@ Disponible dans docs/ :
 - README.md — documentation générale
 - ROADMAP.md — progression v1.0 → v5.0
 - CHANGELOG.md — historique complet
-- ARCHITECTURE.md — structure interne
+- STRUCTURE.md — structure interne
 - USAGE.md — guide d’utilisation
 
 ### 📦 MIR-Action v5.0
