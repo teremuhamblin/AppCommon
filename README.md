@@ -59,6 +59,7 @@ npm test
 ```
 ### 🧰 CLI AppCommon v1.0
 [![CodeQL Analysis](https://github.com/teremuhamblin/AppCommon/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/teremuhamblin/AppCommon/actions/workflows/codeql-analysis.yml)
+
 La CLI intégrée permet de générer automatiquement des modules ou des projets.
 - Générer un module
 ```text
