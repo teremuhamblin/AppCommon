@@ -1,20 +1,36 @@
 {
   "name": "appcommon",
-  "version": "1.0.0",
-  "description": "Template universel pour applications et sites web.",
+  "version": "1.1.0",
+  "description": "Template universel, minimaliste et extensible pour applications web modernes.",
   "author": "Teremu",
-  "license": "UNLICENSED",
+  "license": "The Unlicense",
   "type": "module",
+
   "scripts": {
-    "start": "echo 'AppCommon v1.0 — aucun serveur configuré'",
-    "lint": "eslint src dist",
+    "start": "node src/core/app.js",
+    "build": "gulp build",
+    "archive": "gulp archive",
+    "lint": "eslint src",
     "format": "prettier --write ."
   },
+
+  "engines": {
+    "node": ">=22.0.0"
+  },
+
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "eslint": "^9.0.0",
     "eslint-plugin-mocha": "^10.0.0",
     "globals": "^15.0.0",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-eslint-new": "^1.8.0",
+    "gulp-header": "^2.0.9",
+    "gulp-rename": "^2.0.0",
+    "archiver": "^7.0.0",
+    "glob": "^10.3.10",
+    "del": "^7.1.0"
   }
 }
