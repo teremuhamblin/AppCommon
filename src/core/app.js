@@ -1,6 +1,8 @@
 export const AppCommon = {
+  version: "5.0.0",
+
   init() {
-    console.log("AppCommon v3.0 — système initialisé");
+    console.log(`AppCommon v${this.version} — système initialisé`);
   }
 };
 
