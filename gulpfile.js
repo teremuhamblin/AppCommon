@@ -1,185 +1,47 @@
-// AppCommon v1.1 — Gulp Build System Minimal & Modulaire
+import gulp from "gulp";
+import clean from "gulp-clean";
+import concat from "gulp-concat";
+import terser from "gulp-terser";
+import cleanCSS from "gulp-clean-css";
+import htmlmin from "gulp-htmlmin";
 
-import fs from 'fs';
-import path from 'path';
-import gulp from 'gulp';
-import gulpAutoPrefixer from 'gulp-autoprefixer';
-import gulpEslint from 'gulp-eslint-new';
-import gulpHeader from 'gulp-header';
-import gulpRename from 'gulp-rename';
-import archiver from 'archiver';
-import { globSync } from 'glob';
-import { deleteSync } from 'del';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
-const pkg = require('./package.json');
-
-// Dossiers AppCommon v1.1
-const dirs = {
-  src: 'src',
-  dist: 'dist',
-  archive: 'archive'
+const paths = {
+  src: "src/**/*",
+  dist: "dist/"
 };
 
-// ---------------------------------------------------------------------
-// | Helper tasks                                                      |
-// ---------------------------------------------------------------------
-
-// Créer le dossier archive/
-gulp.task('archive:create_dir', done => {
-  if (!fs.existsSync(dirs.archive)) {
-    fs.mkdirSync(path.resolve(dirs.archive), '0755');
-  }
-  done();
+gulp.task("clean", () => {
+  return gulp.src(paths.dist, { read: false, allowEmpty: true }).pipe(clean());
 });
 
-// Créer un ZIP de dist/
-gulp.task('archive:zip', done => {
-  const archiveName = path.resolve(
-    dirs.archive,
-    `${pkg.name}_v${pkg.version}.zip`
-  );
-
-  const zip = archiver('zip');
-  const output = fs.createWriteStream(archiveName);
-
-  const files = globSync('**/*.*', {
-    cwd: dirs.dist,
-    ignore: ['**/node_modules/**', '**/.cache/**'],
-    dot: true
-  });
-
-  zip.on('error', error => {
-    done();
-    throw error;
-  });
-
-  output.on('close', done);
-
-  files.forEach(file => {
-    const filePath = path.resolve(dirs.dist, file);
-    zip.append(fs.createReadStream(filePath), {
-      name: file,
-      mode: fs.statSync(filePath).mode
-    });
-  });
-
-  zip.pipe(output);
-  zip.finalize();
-});
-
-// Nettoyer dist/ et archive/
-gulp.task('clean', done => {
-  deleteSync([dirs.dist, dirs.archive]);
-  done();
-});
-
-// ---------------------------------------------------------------------
-// | Copy tasks (AppCommon v1.1)                                       |
-// ---------------------------------------------------------------------
-
-// Copier index.html
-gulp.task('copy:index', () =>
-  gulp.src(`${dirs.src}/index.html`).pipe(gulp.dest(dirs.dist))
-);
-
-// Copier LICENSE
-gulp.task('copy:license', () =>
-  gulp.src('LICENSE').pipe(gulp.dest(dirs.dist))
-);
-
-// Copier CSS (UI core + thèmes + composants)
-gulp.task('copy:css', () => {
-  const banner = `/*! AppCommon v${pkg.version} | ${pkg.license} */\n\n`;
-
+gulp.task("html", () => {
   return gulp
-    .src([
-      `${dirs.src}/ui/**/*.css`,
-      `!${dirs.src}/ui/themes/**/*.css` // thèmes copiés séparément
-    ])
-    .pipe(gulpHeader(banner))
-    .pipe(gulpAutoPrefixer({ cascade: false }))
-    .pipe(gulp.dest(`${dirs.dist}/ui`));
+    .src("src/**/*.html")
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest("dist"));
 });
 
-// Copier thèmes UI
-gulp.task('copy:themes', () =>
-  gulp.src(`${dirs.src}/ui/themes/**/*.css`).pipe(gulp.dest(`${dirs.dist}/ui/themes`))
-);
+gulp.task("js", () => {
+  return gulp
+    .src("src/**/*.js")
+    .pipe(concat("app.js"))
+    .pipe(terser())
+    .pipe(gulp.dest("dist/core"));
+});
 
-// Copier JS (core + modules + ui)
-gulp.task('copy:js', () =>
-  gulp
-    .src([
-      `${dirs.src}/core/**/*.js`,
-      `${dirs.src}/modules/**/*.js`,
-      `${dirs.src}/ui/**/*.js`
-    ])
-    .pipe(gulp.dest(`${dirs.dist}`))
-);
+gulp.task("css", () => {
+  return gulp
+    .src("src/**/*.css")
+    .pipe(cleanCSS())
+    .pipe(gulp.dest("dist/ui"));
+});
 
-// Copier assets
-gulp.task('copy:assets', () =>
-  gulp.src(`${dirs.src}/assets/**/*`).pipe(gulp.dest(`${dirs.dist}/assets`))
-);
+gulp.task("assets", () => {
+  return gulp.src("src/assets/**/*").pipe(gulp.dest("dist/assets"));
+});
 
-// Copier tout le reste
-gulp.task('copy:misc', () =>
-  gulp
-    .src(
-      [
-        `${dirs.src}/**/*`,
-        `!${dirs.src}/index.html`,
-        `!${dirs.src}/ui/**/*.css`,
-        `!${dirs.src}/ui/**/*.js`,
-        `!${dirs.src}/core/**/*.js`,
-        `!${dirs.src}/modules/**/*.js`,
-        `!${dirs.src}/assets/**/*`,
-        '!**/.DS_Store'
-      ],
-      { dot: true }
-    )
-    .pipe(gulp.dest(dirs.dist))
-);
+gulp.task("build", gulp.series("clean", "html", "js", "css", "assets"));
 
-// ---------------------------------------------------------------------
-// | Lint (AppCommon v1.1)                                             |
-// ---------------------------------------------------------------------
-
-gulp.task('lint:js', () =>
-  gulp
-    .src([
-      `${dirs.src}/core/**/*.js`,
-      `${dirs.src}/modules/**/*.js`,
-      `${dirs.src}/ui/**/*.js`
-    ])
-    .pipe(gulpEslint())
-    .pipe(gulpEslint.failOnError())
-);
-
-// ---------------------------------------------------------------------
-// | Main tasks                                                        |
-// ---------------------------------------------------------------------
-
-gulp.task(
-  'copy',
-  gulp.series(
-    'copy:index',
-    'copy:license',
-    'copy:css',
-    'copy:themes',
-    'copy:js',
-    'copy:assets',
-    'copy:misc'
-  )
-);
-
-gulp.task('build', gulp.series(gulp.parallel('clean', 'lint:js'), 'copy'));
-
-gulp.task(
-  'archive',
-  gulp.series('build', 'archive:create_dir', 'archive:zip')
-);
-
-gulp.task('default', gulp.series('build'));
+gulp.task("dev", () => {
+  gulp.watch(paths.src, gulp.series("build"));
+});
