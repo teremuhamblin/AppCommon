@@ -1,0 +1,25 @@
+{
+  "name": "appcommon",
+  "version": "1.1.0",
+  "description": "Template universel, minimaliste et extensible pour applications web modernes.",
+  "author": "Teremu",
+  "license": "The Unlicense",
+  
+  "type": "module",
+
+  "build": {
+    "distFolder": "dist",
+    "srcFolder": "src"
+  },
+
+  "scripts": {
+    "start": "node src/core/app.js",
+    "build": "node build.js",
+    "test": "npm run test:unit",
+    "test:unit": "echo \"No tests defined yet for AppCommon v1.1\""
+  },
+
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
