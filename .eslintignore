@@ -1,3 +1,34 @@
+# AppCommon v1.1 — ESLint Ignore
+
+# Build output
 dist/
-assets/
+build/
+
+# Node dependencies
 node_modules/
+
+# Assets (non JS)
+src/assets/
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Documentation
+docs/
+
+# GitHub metadata
+.github/
+
+# Config files not meant to be linted
+*.md
+*.yml
+*.yaml
+*.lock
+LICENSE
+
+# Environment files
+.env
+.env.*
