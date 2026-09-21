@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppCommon v1.0 - Dev</title>
-    <link rel="stylesheet" href="css/appcommon.css">
+    <title>AppCommon</title>
+    <link rel="stylesheet" href="./ui/ui-core.css">
 </head>
 <body>
-
-    <h1>AppCommon v1.0 — Développement</h1>
-    <p>Point de départ pour votre application.</p>
-
-    <script src="js/appcommon.js"></script>
+    <h1>AppCommon v1.0</h1>
+    <script type="module">
+        import { initAppCommon } from "./core/app.js";
+        initAppCommon();
+    </script>
 </body>
 </html>
