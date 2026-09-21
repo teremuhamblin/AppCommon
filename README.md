@@ -96,8 +96,6 @@ Pipeline complet :
 
 >Fichier : .github/workflows/build.yml
 
----
-
 ### 📘 Documentation v5.0
 Disponible dans docs/ :
 - README.md — documentation générale
@@ -105,8 +103,6 @@ Disponible dans docs/ :
 - CHANGELOG.md — historique complet
 - ARCHITECTURE.md — structure interne
 - USAGE.md — guide d’utilisation
-
----
 
 ### 📦 MIR-Action v5.0
 Dans **.github/MIR-Action/** :
