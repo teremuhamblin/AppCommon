@@ -1,10 +1,8 @@
 ###### README.md >> markdown 
 # 🧨 Strucutre du projet
-- AppCommon v1.0 → v1.1-ready
-> Objectif :  
+- AppCommon v1.0 → v1.1
+### Objectif :  
 > Clarifier, normaliser, séparer les responsabilités, préparer la modularité, renforcer CI/CD, améliorer la documentation, professionnaliser l’arborescence.
-
----
 
 ### 🏗️ STRUCTURE
 ```text
@@ -35,11 +33,11 @@ AppCommon/
 │   └── (auto-généré par CI)
 │
 ├── docs/                        # Documentation du projet
-│   ├── about-repo.md            # Documentation GitHub du dépôt
-│   ├── architecture.md          # Architecture AppCommon
-│   ├── modules.md               # Documentation des modules
-│   ├── ci-cd.md                 # Documentation CI/CD
-│   └── usage.md                 # Guide d'utilisation
+│   ├── # Documentation GitHub du dépôt
+│   ├── # Architecture AppCommon
+│   ├── # Documentation des modules
+│   ├── # Documentation CI/CD
+│   └── # Guide d'utilisation
 │
 ├── .github/
 │   ├── workflows/               # CI/CD complet
