@@ -1,15 +1,20 @@
 {
   "name": "appcommon",
-  "version": "3.0.0",
-  "description": "AppCommon v3.0 — Template modulaire militaire-grade",
+  "version": "5.0.0",
+  "description": "AppCommon v5.0 — Template modulaire professionnel",
   "type": "module",
+  "bin": {
+    "appcommon": "./cli/appcommon.js"
+  },
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build",
     "clean": "gulp clean",
     "lint": "eslint src/",
     "format": "prettier --write .",
-    "test": "echo \"Tests v3.0 en préparation\""
+    "test": "node tests/run-tests.js",
+    "module": "node cli/generate-module.js",
+    "project": "node cli/generate-project.js"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
