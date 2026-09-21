@@ -1,0 +1,24 @@
+name: Sync to Template
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Push to template
+        uses: cpina/github-action-push-to-another-repository@v2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.TEMPLATE_SYNC_TOKEN }}
+        with:
+          source-directory: "."
+          destination-github-username: "Teremu"
+          destination-repository-name: "AppCommon-Template"
+          user-email: "sync@appcommon.local"
+          commit-message: "Sync from AppCommon v1.1"
