@@ -1,0 +1,6 @@
+/* Reusable button component */
+.btn {
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+}
